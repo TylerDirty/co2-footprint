@@ -6,7 +6,12 @@ let emissionsdaten = [
 let tabellenkoerper = document.querySelector("tbody");
 
 function zeigeTabelle(daten) {
-  tabellenkoerper.innerHTML += `
+
+  tabellenkoerper.innerHTML = "";
+
+  for (let datensatz of daten){
+
+    tabellenkoerper.innerHTML += `
       <tr>
         <td>${datensatz.land}</td>
         <td>${datensatz.unternehmen}</td>
@@ -15,3 +20,5 @@ function zeigeTabelle(daten) {
     `;
   }
 }
+
+zeigeTabelle(emissionsdaten);
