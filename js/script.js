@@ -21,4 +21,15 @@ function zeigeTabelle(daten) {
   }
 }
 
-zeigeTabelle(emissionsdaten);
+function filterNachLand(land){
+  
+  let gefilterteDaten = [];
+  
+  for (let datensatz of emissionsdaten) {
+
+    if (datensatz.land ===) {
+      gefilterteDaten.push(datensatz);
+    }
+  }
+  zeigeTabelle(gefilterteDaten);
+}
