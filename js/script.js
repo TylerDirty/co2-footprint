@@ -4,6 +4,8 @@ let emissionsdaten = [
   { land: "Großbritannien", unternehmen: "Greenfield Energy Ltd", emissionen: 15400 },
 ];
 
+const erlaubteLaender = ["Deutschland", "Frankreich", "Großbritannien"];
+
 let tabellenkoerper = document.querySelector("tbody");
 
 function zeigeTabelle(daten) {
@@ -23,6 +25,11 @@ function zeigeTabelle(daten) {
 }
 
 function filterNachLand(land){
+
+  if (!erlaubteLaender.includes(land) && land !== "") {
+    console.log("ungültige Eingabe");
+    return;
+  }
   
   let gefilterteDaten = [];
   
