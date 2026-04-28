@@ -20,18 +20,17 @@
 
         <nav>
             <ul>
-                <li><a href="#">Startseite</a></li>
-                <li><a href="#">Länder</a></li>
-                <li><a href="#">Unternehmen</a></li>
-                <li><a href="#">Kontakt</li>
+                <li><a href="#start">Startseite</a></li>
+                <li><a href="#tabelle">Länder</a></li>
+                <li><a href="#tabelle">Unternehmen</a></li>
+                <li><a href="#kontakt">Kontakt</li>
             </ul>
         </nav>
 
-        <form>
-            <label for="landFilter">Filter nach Land:</label>
+        <form id="filter">
 
             <select id="landFilter">
-                <option value="">Alle</option>
+                <option value="">Filter nach Land</option>
                 <option value="Deutschland">Deutschland</option>
                 <option value="Frankreich">Frankreich</option>
                 <option value="Großbritannien">Großbritannien</option>
@@ -43,19 +42,19 @@
         <aside>
             <nav>
                 <ul>
-                    <li><a href="#">Übersicht</a></li>
-                    <li><a href="#">Tabelle</a></li>
-                    <li><a href="#">Filter</a></li>
+                    <li><a href="#uebersicht">Übersicht</a></li>
+                    <li><a href="#tabelle">Tabelle</a></li>
+                    <li><a href="#filter">Filter</a></li>
                 </ul>
             </nav>
         </aside>
 
         <div class="content">
-            <section>
+            <section id="uebersicht">
                 <h2>Willkommen zum CO 2 Footprint</h2>
             </section> 
 
-             <section>
+             <section id="tabelle">
                 <table>
                     <thead>
                         <tr>
@@ -82,6 +81,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <div style="height: 800px;"></div>
             </section>
          </div>      
 
