@@ -30,6 +30,16 @@ footer {
     padding: 20px;
     text-align: center;
 }
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+footer li {
+    margin: 0 5px;
+}
+footer nav {
+    margin-bottom: 10px;
+}
 html[dir="ltr"] aside {
     order: 0;
 }
