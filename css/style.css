@@ -13,11 +13,14 @@ main {
 aside {
     width: 200px;
 }
-section {
+.content {
     flex: 1;
 }
+section {
+    flex: 1;
+    text-align: center;
+}
 table {
-    margin: 0 auto;
     width: 100%;
     border-collapse: collapse;
 }
@@ -43,13 +46,13 @@ footer nav {
 html[dir="ltr"] aside {
     order: 0;
 }
-html[dir="ltr"] section {
+html[dir="ltr"] .content {
     order: 1;
 }
 html[dir="rtl"] aside {
     order: 1;
 }
-html[dir="rtl"] section {
+html[dir="rtl"] .content {
     order: 0;
 }   
 @media (max-width: 768px) {
