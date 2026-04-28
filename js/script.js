@@ -1,5 +1,5 @@
 let emissionsdaten = [
-  { land: "Deutschland", unternehmen: "Fuchsbau GmbB", emissionen: 12000 },
+  { land: "Deutschland", unternehmen: "Fuchsbau GmbH", emissionen: 12000 },
   { land: "Frankreich", unternehmen: "Énergie Verte SAS", emissionen: 8700 },
   { land: "Großbritannien", unternehmen: "Greenfield Energy Ltd", emissionen: 15400 },
 ];
@@ -87,5 +87,20 @@ function sortiereNachEmissionen() {
 
   zeigeTabelle(emissionsdaten);
 }
+
+document.querySelector("#landFilter").addEventListener("change", function() {
+
+  let auswahl = this.value;
+
+  if (auswahl === "") {
+    zeigeTabelle(emissionsdaten);
+  } else {
+    filterNachLand(auswahl);
+  }
+});
+
+document.querySelector("#unternehmenSort").addEventListener("click", sortiereNachUnternehmen);
+document.querySelector("#landSort").addEventListener("click", sortiereNachLand);
+document.querySelector("#emissionenSort").addEventListener("click", sortiereNachEmissionen);
 
 zeigeTabelle(emissionsdaten);
