@@ -1,4 +1,19 @@
+main {
+    display: flex;
+}
+html[dir="ltr"] aside {
+    order: 0;
+}
+html[dir="ltr"] section {
+    order: 1;
+}
+html[dir="rtl"] aside {
+    order: 1;
+}
+html[dir="rtl"] section {
+    order: 0;
+}   
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
-    }
+    }  
