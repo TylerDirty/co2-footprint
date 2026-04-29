@@ -4,16 +4,14 @@ let emissionsdaten = [
   { land: "Großbritannien", unternehmen: "Greenfield Energy Ltd", emissionen: 15400 },
 ];
 
-const erlaubteLaender = ["Deutschland", "Frankreich", "Großbritannien"];
+let aktuelleDaten = [...emissionsdaten];
 
 let tabellenkoerper = document.querySelector("tbody");
 
 function zeigeTabelle(daten) {
-
   tabellenkoerper.innerHTML = "";
 
   for (let datensatz of daten){
-
     tabellenkoerper.innerHTML += `
       <tr>
         <td>${datensatz.land}</td>
@@ -24,28 +22,33 @@ function zeigeTabelle(daten) {
   }
 }
 
-function filterNachLand(land){
+function filterDaten(filterWert) {
 
-  if (!erlaubteLaender.includes(land) && land !== "") {
-    console.log("ungültige Eingabe");
+  if (filterWert === "") {
+    aktuelleDaten = [...emissionsdaten];
+    zeigeTabelle(aktuelleDaten);
     return;
   }
-  
-  let gefilterteDaten = [];
-  
-  for (let datensatz of emissionsdaten) {
 
-    if (datensatz.land === land) {
+  let teile = filterWert.split(":");
+  let feld = teile[0];
+  let wert = teile[1];
+
+  let gefilterteDaten = [];
+
+  for (let datensatz of emissionsdaten) {
+    if (datensatz[feld] === wert) {
       gefilterteDaten.push(datensatz);
     }
   }
 
-  zeigeTabelle(gefilterteDaten);
+  aktuelleDaten = gefilterteDaten;
+  zeigeTabelle(aktuelleDaten);
 }
 
 function sortiereNachUnternehmen() {
 
-  emissionsdaten.sort(function(a, b) {
+  aktuelleDaten.sort(function(a, b) {
 
     if (a.unternehmen < b.unternehmen) {
       return -1;    
@@ -58,12 +61,12 @@ function sortiereNachUnternehmen() {
     return 0;
   });
 
-  zeigeTabelle(emissionsdaten);
+  zeigeTabelle(aktuelleDaten);
 }
 
 function sortiereNachLand() {
 
-  emissionsdaten.sort(function(a, b) {
+  aktuelleDaten.sort(function(a, b) {
 
     if (a.land < b.land) {
       return -1;    
@@ -76,31 +79,24 @@ function sortiereNachLand() {
     return 0;
   });
 
-  zeigeTabelle(emissionsdaten);
+  zeigeTabelle(aktuelleDaten);
 }
 
 function sortiereNachEmissionen() {
 
-  emissionsdaten.sort(function(a, b) {
+  aktuelleDaten.sort(function(a, b) {
     return a.emissionen - b.emissionen;
   });
 
-  zeigeTabelle(emissionsdaten);
+  zeigeTabelle(aktuelleDaten);
 }
 
-document.querySelector("#landFilter").addEventListener("change", function() {
-
-  let auswahl = this.value;
-
-  if (auswahl === "") {
-    zeigeTabelle(emissionsdaten);
-  } else {
-    filterNachLand(auswahl);
-  }
+document.querySelector("#filterAuswahl").addEventListener("change", function() {
+  filterDaten(this.value);
 });
 
 document.querySelector("#unternehmenSort").addEventListener("click", sortiereNachUnternehmen);
 document.querySelector("#landSort").addEventListener("click", sortiereNachLand);
 document.querySelector("#emissionenSort").addEventListener("click", sortiereNachEmissionen);
 
-zeigeTabelle(emissionsdaten);
+zeigeTabelle(aktuelleDaten);
