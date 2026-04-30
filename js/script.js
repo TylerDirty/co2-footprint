@@ -34,6 +34,11 @@ function filterDaten(filterWert) {
   let feld = teile[0];
   let wert = teile[1];
 
+  if (feld !== "land" && feld !== "unternehmen") {
+    console.log("ungültiger Filter");
+    return;
+  }
+ 
   let gefilterteDaten = [];
 
   for (let datensatz of emissionsdaten) {
